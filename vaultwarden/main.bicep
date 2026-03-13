@@ -209,23 +209,23 @@ resource vaultwardenapp 'Microsoft.App/containerApps@2023-05-01' = {
             }
             {
               name: 'SMTP_HOST'
-              value: 'smtp.sendgrid.net'
+              value: 'smtp.office365.com'
             }
             {
               name: 'SMTP_FROM'
-              value: 'noreply@yourdomain.com'
+              value: 'christian.lechner@insidecloud.de'
             }
             {
               name: 'SMTP_PORT'
-              value: '465'
+              value: '587'
             }
             {
               name: 'SMTP_SECURITY'
-              value: 'force_tls'
+              value: 'starttls'
             }
             {
               name: 'SMTP_USERNAME'
-              value: 'apikey'
+              value: 'christian.lechner@insidecloud.de'
             }
             {
               name: 'SMTP_PASSWORD'
@@ -242,6 +242,22 @@ resource vaultwardenapp 'Microsoft.App/containerApps@2023-05-01' = {
             {
               name: 'SHOW_PASSWORD_HINT'
               value: 'false'
+            }
+            }
+            {
+              name: 'SSO_AUTHORITY'
+              value: 'https://login.microsoftonline.com/${Directory_ID}/v2.0 #tenant'
+            }
+            { name: 'SSO_SCOPES'
+              value: 'openid profile offline_access User.Read'
+            }
+            {
+              name: 'SSO_CLIENT_ID'
+              value: '${Application_ID}'
+            }
+            {
+              name: 'SSO_CLIENT_SECRET'
+              value: '${Secret_Value}'
             }
           ]
           volumeMounts: [
